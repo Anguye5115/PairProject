@@ -23,8 +23,21 @@ public class welcomeScreen implements ActionListener {
 	}
 	
 	public void display(JFrame frame, JPanel panel) {
+//		this.frame = frame;
+//		this.panel = panel;
+		frame = new JFrame();
+		panel = new JPanel();
 		
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		panel.setPreferredSize(new Dimension(500, 750));
+		frame.add(contentPane);
+		frame.pack();
+		frame.setVisible(true);
 		
+		ezButt = new JButton("Easy");
+		ezButt.setActionCommand("Easy");
+		ezButt.addActionListener(this);
+	
 	}
 	
 	public void actionPerformed(ActionEvent e) {
@@ -43,4 +56,15 @@ public class welcomeScreen implements ActionListener {
 //			}
 //		});
 //	}
+	
+	public static void main(String[] args) {
+		javax.swing.SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				JFrame.setDefaultLookAndFeelDecorated(true);
+				welcomeScreen test = new welcomeScreen();
+				test.display();
+			}
+		});
+	}
 }
+
