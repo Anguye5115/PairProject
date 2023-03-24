@@ -14,11 +14,12 @@ public class finishScreen implements ActionListener {
 	JFrame frame;
 	JPanel contentPane;
 	JButton playAgainButt;
+	JLabel winnerPic;
+	//0 = player, 1 = bot, 2 = tie
 	
-	
-	public void display(/*JFrame frame, gamePanel contentPane*/) {
-		this.frame = frame;
-		this.contentPane = contentPane;
+	public void display(/*JFrame frame, gamePanel contentPane,*/ int winIndex) {
+//		this.frame = frame;
+//		this.contentPane = contentPane;
 		
 		frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -28,7 +29,13 @@ public class finishScreen implements ActionListener {
 		frame.pack();
 		frame.setVisible(true);
 		
-		
+		if (winIndex == 0) {
+			winnerPic = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("youWin.png")));
+		} else if (winIndex == 1) {
+			winnerPic = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("youLose.png")));
+		} else if (winIndex == 2) {
+			winnerPic = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("ppLogo.png")));
+		}
 		
 		contentPane.setLayout(null);
 		
