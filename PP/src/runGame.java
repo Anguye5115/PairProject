@@ -65,7 +65,8 @@ public class runGame {
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				JFrame.setDefaultLookAndFeelDecorated(true);
-				new runGame().playPP();
+				runGame instance = new runGame();
+				instance.playPP();
 			}
 		});
 	}
