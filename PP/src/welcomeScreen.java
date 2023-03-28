@@ -18,20 +18,9 @@ public class welcomeScreen implements ActionListener {
 	JButton ezButt, hardButt;
 	JLabel logo;
 	
-	welcomeScreen(JFrame frame, JPanel contentPane){
-		this.frame = frame;
-		this.contentPane = contentPane;
-		contentPane.setLayout(null);
-		ezButt = new JButton("Easy");
-		hardButt = new JButton("Hard");
-		logo = new JLabel(new ImageIcon("images/ppLogo.png"));
-	}
-	
-	public void display(JFrame frame, JPanel panel) {
+	public void display(/*JFrame frame, JPanel panel*/) {
 //		this.frame = frame;
-//		this.panel = panel;
-		frame = new JFrame();
-		panel = new JPanel();
+//		this.contentPane = panel;
 		
 		frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -40,25 +29,32 @@ public class welcomeScreen implements ActionListener {
 		contentPane.setLayout(null);
 		contentPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		
+		ezButt = new JButton("Easy");
+		ezButt.setActionCommand("ezClick");
+		ezButt.addActionListener(this);
+		ezButt.setFont(new Font("Serif", Font.PLAIN, 20));
+		ezButt.setBounds(150, 500, 200, 50);
+		contentPane.add(ezButt);
+		
+		hardButt = new JButton("Hard");
+		hardButt.setActionCommand("hardClick");
+		hardButt.addActionListener(this);
+		hardButt.setFont(new Font("Serif", Font.PLAIN, 20));
+		hardButt.setBounds(150, 575, 200, 50);
+		contentPane.add(hardButt);
 	
+		logo = new JLabel(new ImageIcon("images/ppLogo.png"));
+		logo.setBounds(-5, 50, 500, 500);
+		contentPane.add(logo);
+	
+		frame.setContentPane(contentPane);
+		frame.pack();
+		frame.setVisible(true);
 	}
 	
 	public void actionPerformed(ActionEvent e) {
 		
 	}
-	
-//	public static void main(String[]args) {
-//		javax.swing.SwingUtilities.invokeLater(new Runnable() {
-//			public void run() {
-//				JFrame.setDefaultLookAndFeelDecorated(true);
-//				
-//				JFrame testFrame = new JFrame();
-//				
-//				
-//				new welcomeScreen().display(new JFrame(), new JPanel());
-//			}
-//		});
-//	}
 	
 	public static void main(String[] args) {
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
