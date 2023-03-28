@@ -1,7 +1,10 @@
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -11,15 +14,17 @@ import javax.swing.JPanel;
 public class welcomeScreen implements ActionListener {
 	
 	JFrame frame;
-	JPanel panel;
+	JPanel contentPane;
 	JButton ezButt, hardButt;
 	JLabel logo;
 	
-	welcomeScreen(JFrame frame, JPanel panel){
+	welcomeScreen(JFrame frame, JPanel contentPane){
 		this.frame = frame;
-		this.panel = panel;
-		panel.setLayout(null);
-		logo = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("ppLogo.png")));
+		this.contentPane = contentPane;
+		contentPane.setLayout(null);
+		ezButt = new JButton("Easy");
+		hardButt = new JButton("Hard");
+		logo = new JLabel(new ImageIcon("images/ppLogo.png"));
 	}
 	
 	public void display(JFrame frame, JPanel panel) {
@@ -28,15 +33,13 @@ public class welcomeScreen implements ActionListener {
 		frame = new JFrame();
 		panel = new JPanel();
 		
+		frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		panel.setPreferredSize(new Dimension(500, 750));
-		frame.add(contentPane);
-		frame.pack();
-		frame.setVisible(true);
+		contentPane = new JPanel();
+		contentPane.setPreferredSize(new Dimension(500, 750));
+		contentPane.setLayout(null);
+		contentPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		
-		ezButt = new JButton("Easy");
-		ezButt.setActionCommand("Easy");
-		ezButt.addActionListener(this);
 	
 	}
 	
