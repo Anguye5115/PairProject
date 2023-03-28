@@ -69,7 +69,6 @@ public class finishScreen implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand() == "click") {
 			signal = true;
-			System.out.println("clicked");
 			hide(frame, contentPane);
 		}
 	}

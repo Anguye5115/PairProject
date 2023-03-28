@@ -18,6 +18,10 @@ public class welcomeScreen implements ActionListener {
 	JButton ezButt, hardButt;
 	JLabel logo;
 	
+	private static boolean signal = false;
+	
+	private int difficulty;
+	
 	public void display(/*JFrame frame, JPanel panel*/) {
 //		this.frame = frame;
 //		this.contentPane = panel;
@@ -30,14 +34,14 @@ public class welcomeScreen implements ActionListener {
 		contentPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		
 		ezButt = new JButton("Easy");
-		ezButt.setActionCommand("ezClick");
+		ezButt.setActionCommand("click");
 		ezButt.addActionListener(this);
 		ezButt.setFont(new Font("Serif", Font.PLAIN, 20));
 		ezButt.setBounds(150, 500, 200, 50);
 		contentPane.add(ezButt);
 		
 		hardButt = new JButton("Hard");
-		hardButt.setActionCommand("hardClick");
+		hardButt.setActionCommand("click");
 		hardButt.addActionListener(this);
 		hardButt.setFont(new Font("Serif", Font.PLAIN, 20));
 		hardButt.setBounds(150, 575, 200, 50);
@@ -52,8 +56,29 @@ public class welcomeScreen implements ActionListener {
 		frame.setVisible(true);
 	}
 	
+	public void hide(JFrame frame, JPanel panel) {
+		panel.remove(ezButt);
+		panel.remove(hardButt);
+		panel.remove(logo);
+	}
+	
 	public void actionPerformed(ActionEvent e) {
-		
+		if (e.getActionCommand() == "click") {
+			signal = true;
+			hide(frame, contentPane);
+		}
+	}
+	
+	public int getDiff() {
+		return difficulty;
+	}
+	
+	public boolean checkSignal() {
+		return signal;
+	}
+	
+	public void resetSignal() {
+		signal = false;
 	}
 	
 	public static void main(String[] args) {
