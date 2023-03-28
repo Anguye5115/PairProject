@@ -66,6 +66,7 @@ public class welcomeScreen implements ActionListener {
 		if (e.getActionCommand() == "click") {
 			signal = true;
 			hide(frame, contentPane);
+			System.out.println("WORKS");
 		}
 	}
 	
