@@ -67,6 +67,10 @@ public class welcomeScreen implements ActionListener {
 			signal = true;
 			hide(frame, contentPane);
 			System.out.println("WORKS");
+			
+			
+			
+//			/OGIUAUHKDJNSFOASDIHUF
 		}
 	}
 	
