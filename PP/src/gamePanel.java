@@ -25,7 +25,7 @@ public class gamePanel extends JPanel {
 		frame.setVisible(true);
 		
 	}
-	
+	//testing ni hao
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
