@@ -12,34 +12,48 @@ import java.awt.event.*;
 public class gamePanel extends JPanel implements KeyListener {
 
 	JFrame frame;
-	
+
 	int ballx = 375;
 	int bally = 375;
 	int balldx = 3;
-	int balldy = 3;
-	
+	int balldy = 2;
+
 	int playerx = 15;
-	int playery = 375;
+	int playery = 330;
 	int playerdx, playerdy;
-	
+
+	private boolean gameOver = false;
+	private int winner; //1 is player; 2 is bot
+
+	private boolean upPressed = false;
+	private boolean downPressed = false;
 
 	gamePanel() {
 		frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+
 		frame.addKeyListener(this);
 		frame.add(this);
 		frame.setSize(750, 750);
 		frame.setVisible(true);
 	}
-	
+
 	public void ballMvt() {
 		int width = getWidth();
 		int height = getHeight();
 
 		ballx = ballx + balldx;
 		bally = bally + balldy;
-		
+
+		//		if (ballx < 10) {
+		//			gameOver = true;
+		//			winner = 2;
+		//		} else if ((ballx + 50) > (width - 10)) {
+		//			gameOver = true;
+		//			winner = 1;
+		//		}
+
+		//for testing
 		if (ballx < 10) {
 			balldx = -balldx;
 			ballx = 10;
@@ -55,27 +69,59 @@ public class gamePanel extends JPanel implements KeyListener {
 			balldy = -balldy;
 			bally = height - 60;
 		}
+
+		if ((ballx == (playerx + 10)) && ((bally > playery) && (bally < playery + 100))) {
+			balldx = -balldx;
+			balldy = -balldy;
+		}
+
 	}
-	
+
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		
+
 		//code for the borders
 		g.setColor(Color.BLACK);
 		g.drawLine(10, 10, 730, 10);
 		g.drawLine(730, 10, 730, 710);
 		g.drawLine(730, 710, 10, 710);
 		g.drawLine(10, 710, 10, 10);
-		
+
 		//code for ball mvt
 		g.setColor(Color.PINK);
 		g.fillOval(ballx, bally, 50, 50);
-		
+
 		//code for player mvt
 		g.setColor(Color.MAGENTA);
-		g.fillRect(15, 15, 15, 100);
+		g.fillRect(playerx, playery, 15, 100);
 	}
-	
+
+	public void keyTyped(KeyEvent e) {
+
+	}
+
+	public void keyPressed(KeyEvent e) {
+		if ((e.getKeyCode() == KeyEvent.VK_W) || (e.getKeyCode() == KeyEvent.VK_UP)) {
+			upPressed = true;
+//			playerdy = -1;
+//			playery = playery + playerdy;
+		}
+
+		if ((e.getKeyCode() == KeyEvent.VK_S) || (e.getKeyCode() == KeyEvent.VK_DOWN)) {
+			downPressed = true;
+//			playerdy = 1;
+//			playery = playery + playerdy;
+		}			
+	}
+
+	public void keyReleased(KeyEvent e) {
+		if ((e.getKeyCode() == KeyEvent.VK_W) || (e.getKeyCode() == KeyEvent.VK_UP) || (e.getKeyCode() == KeyEvent.VK_S) || (e.getKeyCode() == KeyEvent.VK_DOWN)) {
+			upPressed = false;
+			downPressed = false;
+			playerdy = 0;
+		}		
+	}
+
 	public static void main(String[] args) {
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -99,20 +145,4 @@ public class gamePanel extends JPanel implements KeyListener {
 		});
 	}
 
-	public void keyTyped(KeyEvent e) {
-		
-	}
-
-	public void keyPressed(KeyEvent e) {
-		System.out.println("Testing");
-		switch (e.getKeyChar()) {
-		case KeyEvent.VK_W:
-			System.out.println("W pressed");
-		}
-	}
-
-	public void keyReleased(KeyEvent e) {
-		
-	}
-	
 }
