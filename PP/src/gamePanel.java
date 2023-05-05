@@ -21,6 +21,8 @@ public class gamePanel extends JPanel implements KeyListener {
 	int playerx = 15;
 	int playery = 330;
 	int playerdx, playerdy;
+	
+	int compx = 710, compy = 330;
 
 	private boolean gameOver = false;
 	private int winner; //1 is player; 2 is bot
@@ -74,6 +76,8 @@ public class gamePanel extends JPanel implements KeyListener {
 			balldx = -balldx;
 			balldy = -balldy;
 		}
+		
+		
 
 	}
 
@@ -94,6 +98,8 @@ public class gamePanel extends JPanel implements KeyListener {
 		//code for player mvt
 		g.setColor(Color.MAGENTA);
 		g.fillRect(playerx, playery, 15, 100);
+		
+		g.fillRect(compx, compy, 15, 100);
 	}
 
 	public void keyTyped(KeyEvent e) {
@@ -105,12 +111,14 @@ public class gamePanel extends JPanel implements KeyListener {
 			upPressed = true;
 //			playerdy = -1;
 //			playery = playery + playerdy;
+			playery-=15;
 		}
 
 		if ((e.getKeyCode() == KeyEvent.VK_S) || (e.getKeyCode() == KeyEvent.VK_DOWN)) {
 			downPressed = true;
 //			playerdy = 1;
 //			playery = playery + playerdy;
+			playery+=15;
 		}			
 	}
 
@@ -120,6 +128,16 @@ public class gamePanel extends JPanel implements KeyListener {
 			downPressed = false;
 			playerdy = 0;
 		}		
+	}
+	
+	public void compMove() {
+		boolean direction = true;
+		
+		if(compy>10) {
+			compy+=1; //moving down 
+			
+		}
+		
 	}
 
 	public static void main(String[] args) {
@@ -133,6 +151,7 @@ public class gamePanel extends JPanel implements KeyListener {
 					public void run() {
 						test.ballMvt();
 						test.repaint();
+						test.compMove();
 						try {
 							Thread.sleep(10);
 						} catch (InterruptedException e) {
