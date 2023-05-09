@@ -23,6 +23,8 @@ public class gamePanel extends JPanel implements KeyListener {
 	int playerdx, playerdy;
 	
 	int compx = 710, compy = 330;
+	int compdx; 
+	int compdy = -1;
 
 	private boolean gameOver = false;
 	private int winner; //1 is player; 2 is bot
@@ -132,12 +134,11 @@ public class gamePanel extends JPanel implements KeyListener {
 	
 	public void compMove() {
 		boolean direction = true;
-		
-		if(compy>10) {
-			compy+=1; //moving down 
-			
+		if((compy+100==710) || (compy == 10)) {
+			compdy = -compdy;
 		}
 		
+		compy += compdy;	
 	}
 
 	public static void main(String[] args) {
