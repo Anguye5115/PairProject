@@ -20,7 +20,7 @@ public class welcomeScreen implements ActionListener {
 	
 	private static boolean signal = false;
 	
-	private int difficulty;
+	private int difficulty; //1 is ez, 2 is hard
 	
 	public welcomeScreen(JFrame frame, JPanel contentPane) {
 		this.frame = frame;
@@ -35,23 +35,23 @@ public class welcomeScreen implements ActionListener {
 	public void display() {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		contentPane = new JPanel();
-		contentPane.setPreferredSize(new Dimension(500, 750));
+		contentPane.setPreferredSize(new Dimension(750, 750));
 		contentPane.setLayout(null);
 		contentPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		
-		ezButt.setActionCommand("click");
+		ezButt.setActionCommand("ezClick");
 		ezButt.addActionListener(this);
 		ezButt.setFont(new Font("Serif", Font.PLAIN, 20));
-		ezButt.setBounds(150, 500, 200, 50);
+		ezButt.setBounds(280, 500, 200, 50);
 		contentPane.add(ezButt);
 		
-		hardButt.setActionCommand("click");
+		hardButt.setActionCommand("hardClick");
 		hardButt.addActionListener(this);
 		hardButt.setFont(new Font("Serif", Font.PLAIN, 20));
-		hardButt.setBounds(150, 575, 200, 50);
+		hardButt.setBounds(280, 575, 200, 50);
 		contentPane.add(hardButt);
 	
-		logo.setBounds(-5, 50, 500, 500);
+		logo.setBounds(125, 50, 500, 500);
 		contentPane.add(logo);
 	
 		frame.setContentPane(contentPane);
@@ -66,9 +66,14 @@ public class welcomeScreen implements ActionListener {
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-		if (e.getActionCommand() == "click") {
+		if (e.getActionCommand() == "ezClick") {
 			signal = true;
 			hide(frame, contentPane);
+			difficulty = 1;
+		} else if (e.getActionCommand() == "hardClick") {
+			signal = true;
+			hide(frame, contentPane);
+			difficulty = 2;
 		}
 	}
 	

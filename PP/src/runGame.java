@@ -2,6 +2,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -11,13 +13,15 @@ import javax.swing.Timer;
 
 public class runGame {
 	JFrame frame;
-	gamePanel gamePanel;
+	JPanel panel;
+	Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 	
-	static int width = 500;
+	static int width = 750;
 	static int height = 750;
 	
-	static gameState state;
+	int difficulty; //1 is ez, 2 is hard
 	
+	static gameState state;
 	enum gameState {
 		WELCOMESCREEN,
 		GAMESCREEN,
@@ -29,10 +33,11 @@ public class runGame {
 	
 	runGame() {
 		frame = new JFrame();
-		gamePanel = new gamePanel(width, height);
+		frame.setSize(width, height);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		panel = new JPanel();
 		state = gameState.WELCOMESCREEN;
-		wScreen = new welcomeScreen(frame, gamePanel);
+		wScreen = new welcomeScreen(frame, panel);
 		fScreen = new finishScreen();
 	}
 	
@@ -40,20 +45,26 @@ public class runGame {
 	ActionListener animate = new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			if (state == gameState.WELCOMESCREEN) {
-				
+				wScreen.display();
+				if (wScreen.checkSignal()) {
+					state = gameState.GAMESCREEN;
+					wScreen.resetSignal();
+				}
 			} else if (state == gameState.GAMESCREEN) {
+//				wScreen.hide(frame, panel);
+				difficulty = wScreen.getDiff();
+				
 				
 			} else if (state == gameState.FINISHSCREEN) {
 				
 			}
-			gamePanel.repaint();
+			panel.repaint();
 		}
 	};
 	Timer timer = new Timer(5, animate);
 	
 	public void playPP() {
-		frame.setContentPane(gamePanel);
-		frame.pack();
+		frame.setContentPane(panel);
 		frame.setVisible(true);
 		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
