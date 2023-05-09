@@ -30,15 +30,18 @@ public class runGame {
 	
 	private welcomeScreen wScreen;
 	private finishScreen fScreen;
+	private gamePanel gameScreen;
 	
 	runGame() {
 		frame = new JFrame();
 		frame.setSize(width, height);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		panel = new JPanel();
-		state = gameState.WELCOMESCREEN;
 		wScreen = new welcomeScreen(frame, panel);
 		fScreen = new finishScreen();
+		
+		state = gameState.WELCOMESCREEN;
 	}
 	
 	int counter = 0;
@@ -51,9 +54,8 @@ public class runGame {
 					wScreen.resetSignal();
 				}
 			} else if (state == gameState.GAMESCREEN) {
-//				wScreen.hide(frame, panel);
+				wScreen.hide(frame, panel);
 				difficulty = wScreen.getDiff();
-				//testing
 				
 			} else if (state == gameState.FINISHSCREEN) {
 				

@@ -12,6 +12,7 @@ import java.awt.event.*;
 public class gamePanel extends JPanel implements KeyListener {
 
 	JFrame frame;
+	JPanel panel;
 
 	int ballx = 375;
 	int bally = 375;
@@ -28,14 +29,17 @@ public class gamePanel extends JPanel implements KeyListener {
 
 	private boolean gameOver = false;
 	private int winner; //1 is player; 2 is bot
+	private int difficulty; //1 is ez, 2 is hard
 
 	private boolean upPressed = false;
 	private boolean downPressed = false;
 
-	gamePanel() {
+	gamePanel(JFrame frame, JPanel panel, int difficulty) {
+		this.frame = frame;
+		this.panel = panel;	
+		
 		frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 		frame.addKeyListener(this);
 		frame.add(this);
 		frame.setSize(750, 750);
@@ -49,6 +53,7 @@ public class gamePanel extends JPanel implements KeyListener {
 		ballx = ballx + balldx;
 		bally = bally + balldy;
 
+		//decides the winner
 		//		if (ballx < 10) {
 		//			gameOver = true;
 		//			winner = 2;
@@ -57,7 +62,7 @@ public class gamePanel extends JPanel implements KeyListener {
 		//			winner = 1;
 		//		}
 
-		//for testing
+		//needs to be removed after testing-----------------------
 		if (ballx < 10) {
 			balldx = -balldx;
 			ballx = 10;
@@ -65,7 +70,9 @@ public class gamePanel extends JPanel implements KeyListener {
 			balldx = -balldx;
 			ballx = width - 60;
 		}
-
+		//---------------------------------------------------------
+		
+		
 		if (bally < 10) {
 			balldy = -balldy;
 			bally = 10;
@@ -74,33 +81,35 @@ public class gamePanel extends JPanel implements KeyListener {
 			bally = height - 60;
 		}
 
-		if ((ballx == (playerx + 10)) && ((bally > playery) && (bally < playery + 100))) {
+		//changes direction of the ball when it hits player/bot
+		if ((ballx == (playerx + 5)) && ((bally > playery) && (bally < playery + 100))) {
 			balldx = -balldx;
-			balldy = -balldy;
 		}
 		
-		
-
 	}
 
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 
-		//code for the borders
+		//top and bottom borders
 		g.setColor(Color.BLACK);
 		g.drawLine(10, 10, 730, 10);
-		g.drawLine(730, 10, 730, 710);
 		g.drawLine(730, 710, 10, 710);
+		
+		//left and right borders
+		g.setColor(Color.RED);
+		g.drawLine(730, 10, 730, 710);
 		g.drawLine(10, 710, 10, 10);
 
-		//code for ball mvt
+		//code for ball
 		g.setColor(Color.PINK);
 		g.fillOval(ballx, bally, 50, 50);
 
-		//code for player mvt
+		//code for player
 		g.setColor(Color.MAGENTA);
 		g.fillRect(playerx, playery, 15, 100);
 		
+		//code for bot
 		g.fillRect(compx, compy, 15, 100);
 	}
 
@@ -111,16 +120,12 @@ public class gamePanel extends JPanel implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 		if ((e.getKeyCode() == KeyEvent.VK_W) || (e.getKeyCode() == KeyEvent.VK_UP)) {
 			upPressed = true;
-//			playerdy = -1;
-//			playery = playery + playerdy;
-			playery-=15;
+			playery -= 15;
 		}
 
 		if ((e.getKeyCode() == KeyEvent.VK_S) || (e.getKeyCode() == KeyEvent.VK_DOWN)) {
 			downPressed = true;
-//			playerdy = 1;
-//			playery = playery + playerdy;
-			playery+=15;
+			playery += 15;
 		}			
 	}
 
@@ -134,7 +139,7 @@ public class gamePanel extends JPanel implements KeyListener {
 	
 	public void compMove() {
 		boolean direction = true;
-		if((compy+100==710) || (compy == 10)) {
+		if ((compy + 100 == 710) || (compy == 10)) {
 			compdy = -compdy;
 		}
 		
@@ -146,7 +151,7 @@ public class gamePanel extends JPanel implements KeyListener {
 			public void run() {
 				JFrame.setDefaultLookAndFeelDecorated(true);
 
-				gamePanel test = new gamePanel();
+				gamePanel test = new gamePanel(new JFrame(), new JPanel(), 1);
 				Timer timer = new Timer();
 				TimerTask task = new TimerTask() {
 					public void run() {
