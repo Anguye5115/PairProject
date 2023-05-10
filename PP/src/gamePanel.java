@@ -18,6 +18,7 @@ public class gamePanel extends JPanel implements KeyListener {
 	int bally = 375;
 	int balldx = 3;
 	int balldy = 2;
+	boolean ballUp = true;
 
 	int playerx = 15;
 	int playery = 330;
@@ -25,7 +26,10 @@ public class gamePanel extends JPanel implements KeyListener {
 	
 	int compx = 710, compy = 330;
 	int compdx; 
-	int compdy = -1;
+	int compdy = -5;
+	
+	static int playerScore = 0;
+	static int compScore = 0;
 
 	private boolean gameOver = false;
 	private int winner; //1 is player; 2 is bot
@@ -52,6 +56,7 @@ public class gamePanel extends JPanel implements KeyListener {
 
 		ballx = ballx + balldx;
 		bally = bally + balldy;
+		//System.out.println(ballx +" "+bally);
 
 		//decides the winner
 		//		if (ballx < 10) {
@@ -87,6 +92,7 @@ public class gamePanel extends JPanel implements KeyListener {
 		}
 		
 	}
+	
 
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -95,6 +101,7 @@ public class gamePanel extends JPanel implements KeyListener {
 		g.setColor(Color.BLACK);
 		g.drawLine(10, 10, 730, 10);
 		g.drawLine(730, 710, 10, 710);
+		
 		
 		//left and right borders
 		g.setColor(Color.RED);
@@ -112,6 +119,18 @@ public class gamePanel extends JPanel implements KeyListener {
 		//code for bot
 		g.fillRect(compx, compy, 15, 100);
 	}
+	
+	public void ballScore() {
+		if(ballx<=10 && bally>playery && bally<playery+100) {
+			playerScore++;
+			System.out.println("Player point: "+playerScore);
+		}
+		
+		if(ballx>=689 && bally>compy && bally<compy+100) {
+			compScore++;
+			System.out.println("Comp point: "+compScore);
+		}
+	}
 
 	public void keyTyped(KeyEvent e) {
 
@@ -120,12 +139,12 @@ public class gamePanel extends JPanel implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 		if ((e.getKeyCode() == KeyEvent.VK_W) || (e.getKeyCode() == KeyEvent.VK_UP)) {
 			upPressed = true;
-			playery -= 15;
+			playery -= 25;
 		}
 
 		if ((e.getKeyCode() == KeyEvent.VK_S) || (e.getKeyCode() == KeyEvent.VK_DOWN)) {
 			downPressed = true;
-			playery += 15;
+			playery += 25;
 		}			
 	}
 
@@ -145,6 +164,14 @@ public class gamePanel extends JPanel implements KeyListener {
 		
 		compy += compdy;	
 	}
+	
+	public void compSmart() {
+//		if(bally is decreasing)
+//			bar go down 
+		if(balldy<0) {
+			System.out.println("up");
+		}
+	}
 
 	public static void main(String[] args) {
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
@@ -158,6 +185,8 @@ public class gamePanel extends JPanel implements KeyListener {
 						test.ballMvt();
 						test.repaint();
 						test.compMove();
+						test.ballScore();
+//						test.compSmart();
 						try {
 							Thread.sleep(10);
 						} catch (InterruptedException e) {
@@ -171,5 +200,7 @@ public class gamePanel extends JPanel implements KeyListener {
 	}
 
 }
+
+
 
 
