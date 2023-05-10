@@ -168,6 +168,42 @@ public class gamePanel extends JPanel implements KeyListener {
 		if(balldy<0) {
 			System.out.println("up");
 		}
+		int[] a = newDest();
+		if(balldx>0) {
+			compx = a[0];
+			compy = a[1];
+		}
+		
+	}
+	
+	public int[] newDest() {
+		int x = ballx, y = bally;
+		int x2 = 0, y2 = 0;
+		int xTimes = 0, yTimes = 0;
+		
+		xTimes = (689 - ballx)/balldx;
+		if(balldy<0) {
+			yTimes = (710 - y)/balldy;
+		}else {
+			yTimes = (y-10)/balldy;
+		}
+		
+		if(balldx>0) {
+			if(xTimes<yTimes) {
+				x2 = x + (xTimes * balldx);
+				y2 = y + (xTimes * balldy);
+			}else {
+				x2 = x + (yTimes * balldx);
+				y2 = y + (yTimes * balldy);
+			}
+		}
+		
+		int[] a = new int[] {x2,y2};
+		System.out.printf("original: (%d, %d) \nnew dest: (%d, %d)\n\n", x,y,a[0],a[1]);
+		
+		
+//		return new int[] {x2,y2};
+		return a;
 	}
 
 	public static void main(String[] args) {
@@ -181,9 +217,10 @@ public class gamePanel extends JPanel implements KeyListener {
 					public void run() {
 						test.ballMvt();
 						test.repaint();
-						test.compMove();
+//						test.compMove();
 						test.ballScore();
-//						test.compSmart();
+						test.compSmart();
+						test.newDest();
 						try {
 							Thread.sleep(10);
 						} catch (InterruptedException e) {
