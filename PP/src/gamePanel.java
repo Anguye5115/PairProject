@@ -13,6 +13,7 @@ public class gamePanel extends JPanel implements KeyListener {
 
 	JFrame frame;
 	JPanel panel;
+	JLabel score; 
 
 	int ballx = 375;
 	int bally = 375;
@@ -45,6 +46,11 @@ public class gamePanel extends JPanel implements KeyListener {
 		frame.add(this);
 		frame.setSize(750, 750);
 		frame.setVisible(true);
+		
+		//how do you make this show
+		score = new JLabel("Player Score: "+playerScore+"\nComputer Score: "+compScore);
+		score.setLocation(10, 10);
+		panel.add(score);
 	}
 
 	public void ballMvt() {
@@ -165,15 +171,16 @@ public class gamePanel extends JPanel implements KeyListener {
 	public void compSmart() {
 //		if(bally is decreasing)
 //			bar go down 
-		if(balldy<0) {
-			System.out.println("up");
-		}
 		int[] a = newDest();
 		if(balldx>0) {
-			compx = a[0];
-			compy = a[1];
+			//compx = a[0];
+			compy = a[1]-50;
 		}
 		
+	}
+	
+	public void compTrack() {
+		compy = bally;
 	}
 	
 	public int[] newDest() {
@@ -218,8 +225,9 @@ public class gamePanel extends JPanel implements KeyListener {
 						test.ballMvt();
 						test.repaint();
 //						test.compMove();
+//						test.compSmart();
+						test.compTrack();
 						test.ballScore();
-						test.compSmart();
 						test.newDest();
 						try {
 							Thread.sleep(10);
