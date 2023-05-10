@@ -94,6 +94,10 @@ public class gamePanel extends JPanel implements KeyListener {
 			balldx = -balldx;
 		}
 		
+		if ((ballx == (compx - 5)) && (bally > compy) && (bally < compy + 100)) {
+			balldx = -balldx;
+		}
+		
 	}
 	
 
