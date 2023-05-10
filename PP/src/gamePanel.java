@@ -35,9 +35,6 @@ public class gamePanel extends JPanel implements KeyListener {
 	private int winner; //1 is player; 2 is bot
 	private int difficulty; //1 is ez, 2 is hard
 
-	private boolean upPressed = false;
-	private boolean downPressed = false;
-
 	gamePanel(JFrame frame, JPanel panel, int difficulty) {
 		this.frame = frame;
 		this.panel = panel;	
@@ -138,20 +135,20 @@ public class gamePanel extends JPanel implements KeyListener {
 
 	public void keyPressed(KeyEvent e) {
 		if ((e.getKeyCode() == KeyEvent.VK_W) || (e.getKeyCode() == KeyEvent.VK_UP)) {
-			upPressed = true;
-			playery -= 25;
+			if (playery > 10) {
+				playery -= 25;	
+			}
 		}
 
 		if ((e.getKeyCode() == KeyEvent.VK_S) || (e.getKeyCode() == KeyEvent.VK_DOWN)) {
-			downPressed = true;
-			playery += 25;
+			if (playery < 740) {
+				playery += 25;	
+			}
 		}			
 	}
 
 	public void keyReleased(KeyEvent e) {
 		if ((e.getKeyCode() == KeyEvent.VK_W) || (e.getKeyCode() == KeyEvent.VK_UP) || (e.getKeyCode() == KeyEvent.VK_S) || (e.getKeyCode() == KeyEvent.VK_DOWN)) {
-			upPressed = false;
-			downPressed = false;
 			playerdy = 0;
 		}		
 	}

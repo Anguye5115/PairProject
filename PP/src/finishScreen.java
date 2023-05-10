@@ -33,7 +33,7 @@ public class finishScreen implements ActionListener {
 		frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		contentPane = new JPanel();
-		contentPane.setPreferredSize(new Dimension(500, 750));
+		contentPane.setPreferredSize(new Dimension(750, 750));
 		contentPane.setLayout(null);
 		contentPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		
@@ -41,7 +41,7 @@ public class finishScreen implements ActionListener {
 		playAgainButt.setActionCommand("click");
 		playAgainButt.addActionListener(this);
 		playAgainButt.setFont(new Font("Serif", Font.PLAIN, 20));
-		playAgainButt.setBounds(150, 600, 200, 50);
+		playAgainButt.setBounds(280, 600, 200, 50);
 		contentPane.add(playAgainButt);
 		
 		if (winIndex == 0) {
@@ -52,7 +52,7 @@ public class finishScreen implements ActionListener {
 			winnerPic = new JLabel(new ImageIcon("images/tie.png"));
 		}
 		
-		winnerPic.setBounds(-5, 100, 500, 500);
+		winnerPic.setBounds(130, 100, 500, 500);
 		contentPane.add(winnerPic);
 		
 		frame.setContentPane(contentPane);

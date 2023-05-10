@@ -57,6 +57,10 @@ public class runGame {
 				wScreen.hide(frame, panel);
 				difficulty = wScreen.getDiff();
 				
+				//testing
+				difficulty = 1;
+				gameScreen = new gamePanel(frame, panel, difficulty);
+				
 			} else if (state == gameState.FINISHSCREEN) {
 				
 			}
