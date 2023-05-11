@@ -134,10 +134,11 @@ public class gamePanel extends JPanel implements KeyListener {
 			System.out.println("Player point: "+playerScore);
 		}
 		
-		if(ballx>=689 && bally>compy && bally<compy+100) {
+		if(ballx>=689 && bally>=compy && bally<compy+100) {
 			compScore++;
 			System.out.println("Comp point: "+compScore);
 		}
+		
 	}
 
 	public void keyTyped(KeyEvent e) {
