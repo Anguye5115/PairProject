@@ -46,6 +46,7 @@ public class gamePanel extends JPanel implements KeyListener {
 		frame.add(this);
 		frame.setSize(750, 750);
 		frame.setVisible(true);
+		frame.setLocationRelativeTo(null);
 		
 		//how do you make this show
 		score = new JLabel("Player Score: "+playerScore+"\nComputer Score: "+compScore);

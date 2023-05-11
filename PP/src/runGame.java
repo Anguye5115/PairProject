@@ -32,6 +32,9 @@ public class runGame {
 	private finishScreen fScreen;
 	private gamePanel gameScreen;
 	
+	private boolean showGame = false;
+	private boolean showFinish = false;
+	
 	runGame() {
 		frame = new JFrame();
 		frame.setSize(width, height);
@@ -53,15 +56,21 @@ public class runGame {
 				if (wScreen.checkSignal()) {
 					state = gameState.GAMESCREEN;
 					wScreen.resetSignal();
+					showGame = true;
 				}
 			} else if (state == gameState.GAMESCREEN) {
-				wScreen.hide(frame, panel);
-				difficulty = wScreen.getDiff();
-				
-				//testing
-				difficulty = 1;
-				gameScreen.display(frame, panel, difficulty);
-				
+				if (showGame) {
+					wScreen.frame.setVisible(false);
+					difficulty = wScreen.getDiff();	
+					difficulty = 1; //will delete: testing
+					gameScreen.display(frame, panel, difficulty);
+					showGame = false;
+				}
+				gameScreen.ballMvt();
+				gameScreen.repaint();
+				gameScreen.compTrack();
+				gameScreen.ballScore();
+				gameScreen.newDest();
 			} else if (state == gameState.FINISHSCREEN) {
 				
 			}

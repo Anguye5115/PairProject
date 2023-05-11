@@ -62,10 +62,6 @@ public class welcomeScreen implements ActionListener {
 			signal = true;
 			hide(frame, contentPane);
 			difficulty = 1;
-		} else if (e.getActionCommand() == "hardClick") {
-			signal = true;
-			hide(frame, contentPane);
-			difficulty = 2;
 		}
 	}
 	
