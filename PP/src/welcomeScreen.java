@@ -15,7 +15,7 @@ public class welcomeScreen implements ActionListener {
 	
 	JFrame frame;
 	JPanel contentPane;
-	JButton ezButt, hardButt;
+	JButton ezButt;
 	JLabel logo;
 	
 	private static boolean signal = false;
@@ -27,8 +27,7 @@ public class welcomeScreen implements ActionListener {
 		this.contentPane = contentPane;
 		contentPane.setLayout(null);
 		frame = new JFrame();
-		ezButt = new JButton("Easy");
-		hardButt = new JButton("Hard");
+		ezButt = new JButton("Play");
 		logo = new JLabel(new ImageIcon("images/ppLogo.png"));
 	}
 	
@@ -44,12 +43,6 @@ public class welcomeScreen implements ActionListener {
 		ezButt.setFont(new Font("Serif", Font.PLAIN, 20));
 		ezButt.setBounds(280, 500, 200, 50);
 		contentPane.add(ezButt);
-		
-		hardButt.setActionCommand("hardClick");
-		hardButt.addActionListener(this);
-		hardButt.setFont(new Font("Serif", Font.PLAIN, 20));
-		hardButt.setBounds(280, 575, 200, 50);
-		contentPane.add(hardButt);
 	
 		logo.setBounds(125, 50, 500, 500);
 		contentPane.add(logo);
@@ -61,7 +54,6 @@ public class welcomeScreen implements ActionListener {
 	
 	public void hide(JFrame frame, JPanel panel) {
 		panel.remove(ezButt);
-		panel.remove(hardButt);
 		panel.remove(logo);
 	}
 	
