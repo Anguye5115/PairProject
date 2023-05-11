@@ -36,7 +36,7 @@ public class gamePanel extends JPanel implements KeyListener {
 	private int winner; //1 is player; 2 is bot
 	private int difficulty; //1 is ez, 2 is hard
 
-	gamePanel(JFrame frame, JPanel panel, int difficulty) {
+	public void display(JFrame frame, JPanel panel, int difficulty) {
 		this.frame = frame;
 		this.panel = panel;	
 		
@@ -222,7 +222,8 @@ public class gamePanel extends JPanel implements KeyListener {
 			public void run() {
 				JFrame.setDefaultLookAndFeelDecorated(true);
 
-				gamePanel test = new gamePanel(new JFrame(), new JPanel(), 1);
+				gamePanel test = new gamePanel();
+				test.display(new JFrame(), new JPanel(), 1);
 				Timer timer = new Timer();
 				TimerTask task = new TimerTask() {
 					public void run() {
