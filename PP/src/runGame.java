@@ -40,6 +40,7 @@ public class runGame {
 		panel = new JPanel();
 		wScreen = new welcomeScreen(frame, panel);
 		fScreen = new finishScreen();
+		gameScreen = new gamePanel();
 		
 		state = gameState.WELCOMESCREEN;
 	}
@@ -59,7 +60,7 @@ public class runGame {
 				
 				//testing
 				difficulty = 1;
-				gameScreen = new gamePanel(frame, panel, difficulty);
+				gameScreen.display(frame, panel, difficulty);
 				
 			} else if (state == gameState.FINISHSCREEN) {
 				
