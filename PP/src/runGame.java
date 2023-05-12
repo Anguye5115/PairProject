@@ -21,8 +21,6 @@ public class runGame {
 	static int width = 750;
 	static int height = 750;
 	
-	int difficulty; //1 is ez, 2 is hard
-	
 	static gameState state;
 	enum gameState {
 		WELCOMESCREEN,
