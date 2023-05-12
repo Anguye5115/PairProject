@@ -7,22 +7,25 @@ public class ball {
 	int balldy = 2;
 	boolean ballUp = true;
 	
-	int playerx = 15;
-	int playery = 330;
-	int playerdx, playerdy;
-	
-	int compx = 710, compy = 330;
-	int compdx; 
-	int compdy = -5;
+//	int playerx = 15;
+//	int playery = 330;
+//	int playerdx, playerdy;
+//	
+//	int compx = 710, compy = 330;
+//	int compdx; 
+//	int compdy = -5;
 
 
-	public void ballMvt(JPanel panel) {
-		int width = panel.getWidth();
-		int height = panel.getHeight();
+	public int[] ballMvt(int playerx, int playery, int compx, int compy) {
+		
+//		int width = panel.getWidth();
+//		int height = panel.getHeight();
+		
+		int width = 740;
+		int height = 720; 
 
 		ballx = ballx + balldx;
 		bally = bally + balldy;
-		//System.out.println(ballx +" "+bally);
 
 		//decides the winner
 		//		if (ballx < 10) {
@@ -60,6 +63,12 @@ public class ball {
 		if ((ballx == (compx - 5)) && (bally > compy) && (bally < compy + 100)) {
 			balldx = -balldx;
 		}
+				
+		return new int[] {ballx, bally};
 		
 	}
+	
+	public int ballx(){return ballx;}
+	public int bally(){return bally;}
+
 }
