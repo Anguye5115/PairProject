@@ -1,29 +1,34 @@
+import java.util.Random;
 
 public class computer {
 	int compx = 710, compy = 330;
 	int compdy = -5;
 
-	public void compMove() {
-		boolean direction = true;
-		if ((compy + 100 == 630) || (compy == 10)) {
-			compdy = -compdy;
-		}
-		
-		System.out.println(compy);
-		
-		compy += compdy;	
-	}
+	Random rand = new Random();
+	
+//	public void compMove() {
+//		boolean direction = true;
+//		if ((compy + 100 == 630) || (compy == 10)) {
+//			compdy = -compdy;
+//		}
+//		
+//		System.out.println("test");
+//		compdy = rand.nextInt(100);
+//		
+//		compy += compdy;	
+//	}
 	
 	public void compTrack(int bally) {
-		compy = bally;
-	}
-	
-	public void compRan(int bally) {
-		compy = (int)(Math.random()*730+10);
-	}
-	
-	public void ran(int bally) {
+//		compy = bally;
 		
+		for (int i = 0; i < rand.nextInt(4); i++) {
+			compy += compdy;
+		}
+		
+		if ((compy + 100 >= 706) || (compy <= 14)) {
+			compdy = -compdy;
+		}
+	
 	}
 
 	public int compx(){return compx;}
