@@ -32,6 +32,8 @@ public class finishScreen implements ActionListener {
 		
 		frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setLocationRelativeTo(null);
+		
 		contentPane = new JPanel();
 		contentPane.setPreferredSize(new Dimension(750, 750));
 		contentPane.setLayout(null);

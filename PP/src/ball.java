@@ -6,20 +6,8 @@ public class ball {
 	int balldx = 3;
 	int balldy = 2;
 	boolean ballUp = true;
-	
-//	int playerx = 15;
-//	int playery = 330;
-//	int playerdx, playerdy;
-//	
-//	int compx = 710, compy = 330;
-//	int compdx; 
-//	int compdy = -5;
-
 
 	public int[] ballMvt(int playerx, int playery, int compx, int compy) {
-		
-//		int width = panel.getWidth();
-//		int height = panel.getHeight();
 		
 		int width = 740;
 		int height = 720; 
@@ -46,7 +34,6 @@ public class ball {
 		}
 		//---------------------------------------------------------
 		
-		
 		if (bally < 10) {
 			balldy = -balldy;
 			bally = 10;
@@ -55,12 +42,13 @@ public class ball {
 			bally = height - 60;
 		}
 
-		//changes direction of the ball when it hits player/bot
+		//changes direction of the ball when it hits player
 		if ((ballx == (playerx + 5)) && ((bally > playery) && (bally < playery + 100))) {
 			balldx = -balldx;
 		}
 		
-		if ((ballx == (compx - 5)) && (bally > compy) && (bally < compy + 100)) {
+		//changes direction of the ball when  it hits computer
+		if ((ballx == (compx - 40)) && (bally > compy) && (bally < compy + 100)) {
 			balldx = -balldx;
 		}
 				

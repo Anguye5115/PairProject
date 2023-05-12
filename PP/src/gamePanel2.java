@@ -18,10 +18,11 @@ public class gamePanel2 extends JPanel implements KeyListener {
 	static player p = new player();
 	static computer c = new computer();
 	static ball b = new ball();
-
 	
 	static int[] ball;
 
+	private boolean signal = false;
+	
 	int ballx = 375;
 	int bally = 375;
 	int balldx = 3;
@@ -41,9 +42,8 @@ public class gamePanel2 extends JPanel implements KeyListener {
 
 	private boolean gameOver = false;
 	private int winner; //1 is player; 2 is bot
-	private int difficulty; //1 is ez, 2 is hard
 
-	public void display(JFrame frame, JPanel panel, int difficulty) {
+	public void display(JFrame frame, JPanel panel) {
 		this.frame = frame;
 		this.panel = panel;	
 		
@@ -53,6 +53,7 @@ public class gamePanel2 extends JPanel implements KeyListener {
 		frame.add(this);
 		frame.setSize(750, 750);
 		frame.setVisible(true);
+		frame.setLocationRelativeTo(null);
 		
 		//how do you make this show
 		score = new JLabel("Player Score: "+playerScore+"\nComputer Score: "+compScore);
@@ -60,6 +61,11 @@ public class gamePanel2 extends JPanel implements KeyListener {
 		panel.add(score);
 	}
 
+	public void runGame() {
+		ball = b.ballMvt(p.playerx(), p.playery(), c.compx(), c.compy());
+		c.compTrack(ball[1]);
+	}
+	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 
@@ -98,20 +104,29 @@ public class gamePanel2 extends JPanel implements KeyListener {
 		}
 	}
 
+	public boolean checkSignal() {
+		return signal;
+	}
+	
+	public void resetSignal() {
+		signal = false;
+	}
+	
 	public void keyTyped(KeyEvent e) {
 
 	}
 
+	//moves the player's bar
 	public void keyPressed(KeyEvent e) {
 		if ((e.getKeyCode() == KeyEvent.VK_W) || (e.getKeyCode() == KeyEvent.VK_UP)) {
 			if (playery > 10) {
-				playery -= 25;	
+				playery -= 10;	
 			}
 		}
 
 		if ((e.getKeyCode() == KeyEvent.VK_S) || (e.getKeyCode() == KeyEvent.VK_DOWN)) {
 			if (playery < 740) {
-				playery += 25;	
+				playery += 10;	
 			}
 		}			
 	}
@@ -128,7 +143,7 @@ public class gamePanel2 extends JPanel implements KeyListener {
 				JFrame.setDefaultLookAndFeelDecorated(true);
 
 				gamePanel2 test = new gamePanel2();
-				test.display(new JFrame(), new JPanel(), 1);
+				test.display(new JFrame(), new JPanel());
 				Timer timer = new Timer();
 				TimerTask task = new TimerTask() {
 					public void run() {

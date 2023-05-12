@@ -20,8 +20,6 @@ public class welcomeScreen implements ActionListener {
 	
 	private static boolean signal = false;
 	
-	private int difficulty; //1 is ez, 2 is hard
-	
 	public welcomeScreen(JFrame frame, JPanel contentPane) {
 		this.frame = frame;
 		this.contentPane = contentPane;
@@ -61,12 +59,7 @@ public class welcomeScreen implements ActionListener {
 		if (e.getActionCommand() == "ezClick") {
 			signal = true;
 			hide(frame, contentPane);
-			difficulty = 1;
 		}
-	}
-	
-	public int getDiff() {
-		return difficulty;
 	}
 	
 	public boolean checkSignal() {

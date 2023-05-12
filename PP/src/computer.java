@@ -2,19 +2,14 @@
 public class computer {
 	int compx = 710, compy = 330;
 	int compdy = -5;
-	
-//	int ballx = 375;
-//	int bally = 375;
-//	int balldx = 3;
-//	int balldy = 2;
-//	boolean ballUp = true;
-
 
 	public void compMove() {
 		boolean direction = true;
-		if ((compy + 100 == 710) || (compy == 10)) {
+		if ((compy + 100 == 630) || (compy == 10)) {
 			compdy = -compdy;
 		}
+		
+		System.out.println(compy);
 		
 		compy += compdy;	
 	}

@@ -16,6 +16,8 @@ public class runGame {
 	JPanel panel;
 	Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 	
+	static int[] ball;
+	
 	static int width = 750;
 	static int height = 750;
 	
@@ -30,7 +32,7 @@ public class runGame {
 	
 	private welcomeScreen wScreen;
 	private finishScreen fScreen;
-	private gamePanel gameScreen;
+	private gamePanel2 gameScreen;
 	
 	private boolean showGame = false;
 	private boolean showFinish = false;
@@ -43,7 +45,7 @@ public class runGame {
 		panel = new JPanel();
 		wScreen = new welcomeScreen(frame, panel);
 		fScreen = new finishScreen();
-		gameScreen = new gamePanel();
+		gameScreen = new gamePanel2();
 		
 		state = gameState.WELCOMESCREEN;
 	}
@@ -51,6 +53,7 @@ public class runGame {
 	int counter = 0;
 	ActionListener animate = new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
+			
 			if (state == gameState.WELCOMESCREEN) {
 				wScreen.display();
 				if (wScreen.checkSignal()) {
@@ -58,19 +61,23 @@ public class runGame {
 					wScreen.resetSignal();
 					showGame = true;
 				}
+				
 			} else if (state == gameState.GAMESCREEN) {
 				if (showGame) {
 					wScreen.frame.setVisible(false);
-					difficulty = wScreen.getDiff();	
-					difficulty = 1; //will delete: testing
-					gameScreen.display(frame, panel, difficulty);
+					gameScreen.display(frame, panel);
 					showGame = false;
 				}
-				gameScreen.ballMvt();
+				
+				gameScreen.runGame();
 				gameScreen.repaint();
-				gameScreen.compTrack();
 				gameScreen.ballScore();
-				gameScreen.newDest();
+				
+				if (gameScreen.checkSignal()) {
+					state = gameState.FINISHSCREEN;
+					fScreen.display();
+				}
+				
 			} else if (state == gameState.FINISHSCREEN) {
 				
 			}
