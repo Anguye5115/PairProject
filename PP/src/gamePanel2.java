@@ -148,7 +148,7 @@ public class gamePanel2 extends JPanel implements KeyListener {
 				TimerTask task = new TimerTask() {
 					public void run() {
 						ball = b.ballMvt(p.playerx(), p.playery(), c.compx(), c.compy());
-						c.compTrack(ball[1]);
+						c.compRan(ball[1]);
 						test.repaint();
 						test.ballScore();
 						try {

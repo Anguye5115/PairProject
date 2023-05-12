@@ -17,6 +17,10 @@ public class computer {
 	public void compTrack(int bally) {
 		compy = bally;
 	}
+	
+	public void compRan(int bally) {
+		compy = (int)(Math.random()*730+10);
+	}
 
 	public int compx(){return compx;}
 	public int compy(){return compy;}
