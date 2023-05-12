@@ -18,7 +18,7 @@ public class finishScreen implements ActionListener {
 	JButton playAgainButt;
 	JLabel winnerPic;
 	int winIndex;
-	//0 = player, 1 = bot, 2 = tie
+	//0 = player, 1 = bot
 	
 	private boolean signal = false;
 	

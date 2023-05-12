@@ -1,11 +1,14 @@
 import javax.swing.JPanel;
 
 public class ball {
-	int ballx = 375;
+	int ballx = 380;
 	int bally = 375;
-	int balldx = 3;
+	int balldx = 2;
 	int balldy = 2;
 	boolean ballUp = true;
+	
+	private boolean gameOver = false;
+	private int winner; //0 = player, 1 = bot
 
 	public int[] ballMvt(int playerx, int playery, int compx, int compy) {
 		
@@ -15,23 +18,23 @@ public class ball {
 		ballx = ballx + balldx;
 		bally = bally + balldy;
 
-		//decides the winner
-		//		if (ballx < 10) {
-		//			gameOver = true;
-		//			winner = 2;
-		//		} else if ((ballx + 50) > (width - 10)) {
-		//			gameOver = true;
-		//			winner = 1;
-		//		}
+//		decides the winner
+		if (ballx < 10) {
+			gameOver = true;
+			winner = 1;
+		} else if ((ballx + 50) > (width - 10)) {
+			gameOver = true;
+			winner = 0;
+		}
 
 		//needs to be removed after testing-----------------------
-		if (ballx < 10) {
-			balldx = -balldx;
-			ballx = 10;
-		} else if ((ballx + 50) > (width - 10)){
-			balldx = -balldx;
-			ballx = width - 60;
-		}
+//		if (ballx < 10) {
+//			balldx = -balldx;
+//			ballx = 10;
+//		} else if ((ballx + 50) > (width - 10)){
+//			balldx = -balldx;
+//			ballx = width - 60;
+//		}
 		//---------------------------------------------------------
 		
 		if (bally < 10) {
@@ -48,7 +51,9 @@ public class ball {
 		}
 		
 		//changes direction of the ball when  it hits computer
-		if ((ballx == (compx - 40)) && (bally > compy) && (bally < compy + 100)) {
+		System.out.println(ballx);
+		
+		if ((ballx == (compx)) && (bally > compy) && (bally < compy + 100)) {
 			balldx = -balldx;
 		}
 				
@@ -56,7 +61,20 @@ public class ball {
 		
 	}
 	
-	public int ballx(){return ballx;}
-	public int bally(){return bally;}
+	public boolean gameOver() {
+		return this.gameOver;
+	}
+	
+	public int winner() {
+		return this.winner;
+	}
+	
+	public int ballx() {
+		return ballx;
+	}
+	
+	public int bally() {
+		return bally;
+	}
 
 }
