@@ -125,7 +125,7 @@ public class gamePanel2 extends JPanel implements KeyListener {
 		}
 
 		if ((e.getKeyCode() == KeyEvent.VK_S) || (e.getKeyCode() == KeyEvent.VK_DOWN)) {
-			if (playery < 740) {
+			if (playery + 100 < 705) {
 				playery += 10;	
 			}
 		}			
