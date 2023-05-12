@@ -45,17 +45,36 @@ public class ball {
 			bally = height - 60;
 		}
 
-		//changes direction of the ball when it hits player
-		if ((ballx == (playerx + 5)) && ((bally > playery) && (bally < playery + 100))) {
+		
+		//testing but spawns in and out 
+		if (ballx < 10 && bally>=playery && bally<(playery+100)) {
 			balldx = -balldx;
+			ballx = 10;
+		} else if ((ballx + 50) > compx && (bally>=compy) && (bally<(compy+100))){
+			balldx = -balldx;
+			ballx = compx - 60;
 		}
+		
+		
+		//changes direction of the ball when it hits player
+//		if ((ballx == (playerx + 5)) && ((bally > playery) && (bally < playery + 100))) {
+//			balldx = -balldx;
+//		}
+		
+//		if((ballx<=playerx+5) && (bally>=playery) && (bally<(playery+100))) {
+//			balldx = -balldx;
+//		}
 		
 		//changes direction of the ball when  it hits computer
-		System.out.println(ballx);
+//		System.out.println(ballx);
 		
-		if ((ballx == (compx)) && (bally > compy) && (bally < compy + 100)) {
-			balldx = -balldx;
-		}
+//		if ((ballx >= (compx)) && (bally >= compy) && (bally < compy + 100)) {
+//			balldx = -balldx;
+//		}
+		
+//		if (ballx>=compx) {
+//			balldx= -balldx;
+//		}
 				
 		return new int[] {ballx, bally};
 		
