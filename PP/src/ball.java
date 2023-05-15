@@ -7,9 +7,6 @@ public class ball {
 	int balldy = 2;
 	boolean ballUp = true;
 	
-	private boolean gameOver = false;
-	private int winner; //0 = player, 1 = bot
-
 	public int[] ballMvt(int playerx, int playery, int compx, int compy) {
 		
 		int width = 740;
@@ -17,15 +14,6 @@ public class ball {
 
 		ballx = ballx + balldx;
 		bally = bally + balldy;
-
-//		decides the winner
-//		if (ballx < 10) {
-//			gameOver = true;
-//			winner = 1;
-//		} else if ((ballx + 50) > (width - 10)) {
-//			gameOver = true;
-//			winner = 0;
-//		}
 		
 		//ball bounces off the top and bottom walls
 		if (bally < 10) {
@@ -37,9 +25,7 @@ public class ball {
 		}
 
 		//changes direction of the ball when it hits player
-		System.out.println("Player: " + playery + " | Ball: " + bally);
-		System.out.println("Player: " + playerx + " | Ball: " + ballx);
-		if ((ballx == (playerx + 14)) && ((bally > (playery - 20)) && (bally < playery + 120))) {
+		if ((ballx == (playerx + 12)) && ((bally > playery - 20) && (bally < playery + 110))) {
 			balldx = -balldx;
 		}
 		
@@ -50,10 +36,6 @@ public class ball {
 				
 		return new int[] {ballx, bally};
 		
-	}
-	
-	public boolean gameOver() {
-		return this.gameOver;
 	}
 	
 	public int balldx() {
