@@ -17,7 +17,7 @@ public class gamePanel2 extends JPanel implements KeyListener {
 	
 	static player p = new player();
 	static computer c = new computer();
-	static ball b = new ball();
+	static ball2 b = new ball2();
 	
 	static int[] ball;
 
@@ -149,6 +149,7 @@ public class gamePanel2 extends JPanel implements KeyListener {
 					public void run() {
 						ball = b.ballMvt(p.playerx(), p.playery(), c.compx(), c.compy());
 						c.compTrack(ball[1]);
+						c.newDest(ball[0], ball[1], b.balldx(), b.balldy());
 						test.repaint();
 						test.ballScore();
 						try {

@@ -38,34 +38,34 @@ public class computer {
 //	}
 	
 	
-//	public int[] newDest() {
-//		int x = ballx, y = bally;
-//		int x2 = 0, y2 = 0;
-//		int xTimes = 0, yTimes = 0;
-//		
-//		xTimes = (689 - ballx)/balldx;
-//		if(balldy<0) {
-//			yTimes = (710 - y)/balldy;
-//		}else {
-//			yTimes = (y-10)/balldy;
-//		}
-//		
-//		if(balldx>0) {
-//			if(xTimes<yTimes) {
-//				x2 = x + (xTimes * balldx);
-//				y2 = y + (xTimes * balldy);
-//			}else {
-//				x2 = x + (yTimes * balldx);
-//				y2 = y + (yTimes * balldy);
-//			}
-//		}
-//		
-//		int[] a = new int[] {x2,y2};
-//		System.out.printf("original: (%d, %d) \nnew dest: (%d, %d)\n\n", x,y,a[0],a[1]);
-//		
-//		
-////		return new int[] {x2,y2};
-//		return a;
-//	}
+	public int[] newDest(int ballx, int bally, int balldx, int balldy) {
+		int x = ballx, y = bally;
+		int x2 = 0, y2 = 0;
+		int xTimes = 0, yTimes = 0;
+		
+		xTimes = (689 - ballx)/balldx;
+		if(balldy<0) {
+			yTimes = (710 - y)/balldy;
+		}else {
+			yTimes = (y-10)/balldy;
+		}
+		
+		if(balldx>0) {
+			if(xTimes<yTimes) {
+				x2 = x + (xTimes * balldx);
+				y2 = y + (xTimes * balldy);
+			}else {
+				x2 = x + (yTimes * balldx);
+				y2 = y + (yTimes * balldy);
+			}
+		}
+		
+		int[] a = new int[] {x2,y2};
+		System.out.printf("original: (%d, %d) \nnew dest: (%d, %d)\n\n", x,y,a[0],a[1]);
+		
+		
+//		return new int[] {x2,y2};
+		return a;
+	}
 	
 }
