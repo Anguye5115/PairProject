@@ -17,14 +17,8 @@ public class finishScreen implements ActionListener {
 	JPanel panel;
 	JButton playAgainButt;
 	JLabel winnerPic;
-	int winIndex;
-	//0 = player, 1 = bot
 	
 	private boolean signal = false;
-	
-	public void getWinIndex(int num) {
-		winIndex = num;
-	}
 	
 	public void display(JFrame frame, JPanel panel) {	
 		this.frame = frame;
@@ -43,15 +37,9 @@ public class finishScreen implements ActionListener {
 		playAgainButt.setBounds(280, 600, 200, 50);
 		panel.add(playAgainButt);
 		
-		if (winIndex == 0) {
-			winnerPic = new JLabel(new ImageIcon("images/youWin.png"));
-		} else if (winIndex == 1) {
-			winnerPic = new JLabel(new ImageIcon("images/youLose.png"));
-		} else if (winIndex == 2) {
-			winnerPic = new JLabel(new ImageIcon("images/tie.png"));
-		}
+		winnerPic = new JLabel(new ImageIcon("images/gameOver.png"));
 		
-		winnerPic.setBounds(130, 100, 500, 500);
+		winnerPic.setBounds(25, 0, 700, 700);
 		panel.add(winnerPic);
 		
 		frame.setContentPane(panel);
@@ -85,7 +73,6 @@ public class finishScreen implements ActionListener {
 			public void run() {
 				JFrame.setDefaultLookAndFeelDecorated(true);
 				finishScreen test = new finishScreen();
-				test.getWinIndex(2);
 				test.display(new JFrame(), new JPanel());
 			}
 		});

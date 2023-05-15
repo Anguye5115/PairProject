@@ -41,7 +41,6 @@ public class gamePanel2 extends JPanel implements KeyListener {
 	public void reset() {
 		c = new computer();
 		b = new ball();
-		ball = null;
 		signal = false;
 		playerx = 14;
 		playery = 330;
@@ -75,15 +74,14 @@ public class gamePanel2 extends JPanel implements KeyListener {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 
-		//top and bottom borders
+		//top and bottom and right borders
 		g.setColor(Color.BLACK);
 		g.drawLine(10, 10, 730, 10);
 		g.drawLine(730, 710, 10, 710);
-		
-		
-		//left and right borders
-		g.setColor(Color.RED);
 		g.drawLine(730, 10, 730, 710);
+		
+		//left border
+		g.setColor(Color.RED);
 		g.drawLine(10, 710, 10, 10);
 
 		//code for ball
