@@ -19,13 +19,13 @@ public class ball {
 		bally = bally + balldy;
 
 //		decides the winner
-		if (ballx < 10) {
-			gameOver = true;
-			winner = 1;
-		} else if ((ballx + 50) > (width - 10)) {
-			gameOver = true;
-			winner = 0;
-		}
+//		if (ballx < 10) {
+//			gameOver = true;
+//			winner = 1;
+//		} else if ((ballx + 50) > (width - 10)) {
+//			gameOver = true;
+//			winner = 0;
+//		}
 
 		//needs to be removed after testing-----------------------
 //		if (ballx < 10) {
@@ -57,23 +57,13 @@ public class ball {
 //		
 		
 		//changes direction of the ball when it hits player
-		if ((ballx == (playerx + 5)) && ((bally > playery) && (bally < playery + 100))) {
-			balldx = -balldx;
-		}
-		
-		if((ballx<=playerx+5) && (bally>=playery) && (bally<(playery+100))) {
+		if ((ballx == (playerx + 45)) && ((bally > playery) && (bally < playery + 100))) {
 			balldx = -balldx;
 		}
 		
 		//changes direction of the ball when  it hits computer
-//		System.out.println(ballx);
-		
-		if ((ballx >= (compx)) && (bally >= compy) && (bally < compy + 100)) {
+		if ((ballx >= (compx - 45)) && (bally >= compy) && (bally < compy + 100)) {
 			balldx = -balldx;
-		}
-		
-		if (ballx>=compx) {
-			balldx= -balldx;
 		}
 				
 		return new int[] {ballx, bally};
@@ -84,8 +74,12 @@ public class ball {
 		return this.gameOver;
 	}
 	
-	public int winner() {
-		return this.winner;
+	public int balldx() {
+		return balldx;
+	}
+	
+	public int balldy() {
+		return balldy;
 	}
 	
 	public int ballx() {
