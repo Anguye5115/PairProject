@@ -30,7 +30,7 @@ public class ball {
 		}
 		
 		//changes direction of the ball when  it hits computer
-		if ((ballx >= (compx - 45)) && (bally >= compy) && (bally < compy + 100)) {
+		if ((ballx >= (compx - 45)) && (bally > compy - 20) && (bally < compy + 100)) {
 			balldx = -balldx;
 		}
 				
