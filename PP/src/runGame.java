@@ -81,6 +81,7 @@ public class runGame {
 				if (gameScreen.checkSignal()) {
 					state = gameState.FINISHSCREEN;
 					showFinish = true;
+					gameScreen.reset();
 				}
 				
 			} else if (state == gameState.FINISHSCREEN) {
@@ -92,9 +93,9 @@ public class runGame {
 				}
 				
 				if (fScreen.checkSignal()) {
+					fScreen.resetSignal();
 					state = gameState.WELCOMESCREEN;
 					showWelcome = true;
-					gameScreen.reset();
 				}
 				
 			}
