@@ -74,10 +74,16 @@ public class runGame {
 				if (gameScreen.checkSignal()) {
 					state = gameState.FINISHSCREEN;
 					fScreen.display();
+					showFinish = true;
 				}
 				
 			} else if (state == gameState.FINISHSCREEN) {
-				
+				if (showFinish) {
+					showFinish = false;
+				}
+				if (fScreen.checkSignal()) {
+					
+				}
 			}
 			panel.repaint();
 		}

@@ -15,7 +15,6 @@ public class gamePanel2 extends JPanel implements KeyListener {
 	JPanel panel;
 	JLabel score; 
 	
-	static player p = new player();
 	static computer c = new computer();
 	
 	//testing ball
@@ -64,7 +63,7 @@ public class gamePanel2 extends JPanel implements KeyListener {
 	}
 
 	public void runGame() {
-		ball = b.ballMvt(p.playerx(), p.playery(), c.compx(), c.compy());
+		ball = b.ballMvt(playerx, playery, c.compx(), c.compy());
 		c.compTrack(ball[1]);
 	}
 	
@@ -122,7 +121,7 @@ public class gamePanel2 extends JPanel implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 		if ((e.getKeyCode() == KeyEvent.VK_W) || (e.getKeyCode() == KeyEvent.VK_UP)) {
 			if (playery > 10) {
-				playery -= 10;	
+				playery -= 10;
 			}
 		}
 
@@ -149,8 +148,7 @@ public class gamePanel2 extends JPanel implements KeyListener {
 				Timer timer = new Timer();
 				TimerTask task = new TimerTask() {
 					public void run() {
-						ball = b.ballMvt(p.playerx(), p.playery(), c.compx(), c.compy());
-						c.compTrack(ball[1]);
+						test.runGame();
 						c.newDest(ball[0], ball[1], b.balldx(), b.balldy());
 						test.repaint();
 						test.ballScore();

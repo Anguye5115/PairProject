@@ -3,7 +3,7 @@ import javax.swing.JPanel;
 public class ball {
 	int ballx = 380;
 	int bally = 375;
-	int balldx = 3;
+	int balldx = 2;
 	int balldy = 2;
 	boolean ballUp = true;
 	
@@ -26,16 +26,6 @@ public class ball {
 //			gameOver = true;
 //			winner = 0;
 //		}
-
-		//needs to be removed after testing-----------------------
-//		if (ballx < 10) {
-//			balldx = -balldx;
-//			ballx = 10;
-//		} else if ((ballx + 50) > (width - 10)){
-//			balldx = -balldx;
-//			ballx = width - 60;
-//		}
-		//---------------------------------------------------------
 		
 		//ball bounces off the top and bottom walls
 		if (bally < 10) {
@@ -45,20 +35,10 @@ public class ball {
 			balldy = -balldy;
 			bally = height - 60;
 		}
-		
-//		//testing but spawns in and out 
-//		if (ballx < 10 && bally>=playery && bally<(playery+100)) {
-//			balldx = -balldx;
-//			ballx = 10;
-//		} else if ((ballx + 50) > compx && (bally>=compy) && (bally<(compy+100))){
-//			balldx = -balldx;
-//			ballx = compx - 60;
-//		}
-//		
-		
+
 		//changes direction of the ball when it hits player
-		System.out.println(ballx);
-		if ((ballx == 14) && ((bally > playery) && (bally < playery + 100))) {
+		System.out.println("Player: " + playery + " | Ball: " + bally);
+		if ((ballx == (playerx + 14)) && ((bally > (playery - 20)) && (bally < playery + 120))) {
 			balldx = -balldx;
 		}
 		
