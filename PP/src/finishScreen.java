@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 public class finishScreen implements ActionListener {
 	
 	JFrame frame;
-	JPanel contentPane;
+	JPanel panel;
 	JButton playAgainButt;
 	JLabel winnerPic;
 	int winIndex;
@@ -26,25 +26,23 @@ public class finishScreen implements ActionListener {
 		winIndex = num;
 	}
 	
-	public void display(/*JFrame frame, gamePanel contentPane*/) {
-//		this.frame = frame;
-//		this.contentPane = contentPane;
-		
-		frame = new JFrame();
+	public void display(JFrame frame, JPanel panel) {	
+		this.frame = frame;
+		this.panel = panel;
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
 		
-		contentPane = new JPanel();
-		contentPane.setPreferredSize(new Dimension(750, 750));
-		contentPane.setLayout(null);
-		contentPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+		panel = new JPanel();
+		panel.setPreferredSize(new Dimension(750, 750));
+		panel.setLayout(null);
+		panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		
 		playAgainButt = new JButton("Play Again");
 		playAgainButt.setActionCommand("click");
 		playAgainButt.addActionListener(this);
 		playAgainButt.setFont(new Font("Serif", Font.PLAIN, 20));
 		playAgainButt.setBounds(280, 600, 200, 50);
-		contentPane.add(playAgainButt);
+		panel.add(playAgainButt);
 		
 		if (winIndex == 0) {
 			winnerPic = new JLabel(new ImageIcon("images/youWin.png"));
@@ -55,9 +53,9 @@ public class finishScreen implements ActionListener {
 		}
 		
 		winnerPic.setBounds(130, 100, 500, 500);
-		contentPane.add(winnerPic);
+		panel.add(winnerPic);
 		
-		frame.setContentPane(contentPane);
+		frame.setContentPane(panel);
 		frame.pack();
 		frame.setVisible(true);
 	}
@@ -71,7 +69,7 @@ public class finishScreen implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand() == "click") {
 			signal = true;
-			hide(frame, contentPane);
+			hide(frame, panel);
 		}
 	}
 	
@@ -89,7 +87,7 @@ public class finishScreen implements ActionListener {
 				JFrame.setDefaultLookAndFeelDecorated(true);
 				finishScreen test = new finishScreen();
 				test.getWinIndex(2);
-				test.display();
+				test.display(new JFrame(), new JPanel());
 			}
 		});
 	}

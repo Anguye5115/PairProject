@@ -24,10 +24,10 @@ public class gamePanel2 extends JPanel implements KeyListener {
 
 	private boolean signal = false;
 	
-	int ballx = 375;
-	int bally = 375;
-	int balldx = 3;
-	int balldy = 2;
+//	int ballx = 375;
+//	int bally = 375;
+//	int balldx = 3;
+//	int balldy = 2;
 	boolean ballUp = true;
 
 	int playerx = 14;
@@ -40,9 +40,6 @@ public class gamePanel2 extends JPanel implements KeyListener {
 	
 	static int playerScore = 0;
 	static int compScore = 0;
-
-	private boolean gameOver = false;
-	private int winner; //1 is player; 2 is bot
 
 	public void display(JFrame frame, JPanel panel) {
 		this.frame = frame;
@@ -93,25 +90,22 @@ public class gamePanel2 extends JPanel implements KeyListener {
 		g.fillRect(c.compx(), c.compy(), 15, 100);
 	}
 	
-	public void ballScore() {
-		if(ballx<=10 && bally>playery && bally<playery+100) {
-			playerScore++;
-			System.out.println("Player point: "+playerScore);
-		}
-		
-		if(ballx>=689 && bally>compy && bally<compy+100) {
-			compScore++;
-			System.out.println("Comp point: "+compScore);
-		}
-	}
+//	public void ballScore() {
+//		if(ballx<=10 && bally>playery && bally<playery+100) {
+//			playerScore++;
+//			System.out.println("Player point: "+playerScore);
+//		}
+//		
+//		if(ballx>=689 && bally>compy && bally<compy+100) {
+//			compScore++;
+//			System.out.println("Comp point: "+compScore);
+//		}
+//	}
 
-	public boolean checkGameOver() {
-		if (ballx < playerx) {
-			gameOver = true;
+	public void checkGameOver() {
+		if (b.ballx() < playerx) {
 			signal = true;
 		}
-		
-		return gameOver;
 	}
 	
 	public boolean checkSignal() {
@@ -156,7 +150,7 @@ public class gamePanel2 extends JPanel implements KeyListener {
 						test.runGame();
 						c.newDest(ball[0], ball[1], b.balldx(), b.balldy());
 						test.repaint();
-						test.ballScore();
+//						test.ballScore();
 						try {
 							Thread.sleep(10);
 						} catch (InterruptedException e) {

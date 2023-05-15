@@ -53,6 +53,7 @@ public class runGame {
 		public void actionPerformed(ActionEvent e) {
 			
 			if (state == gameState.WELCOMESCREEN) {
+				
 				wScreen.display();
 				if (wScreen.checkSignal()) {
 					state = gameState.GAMESCREEN;
@@ -61,6 +62,7 @@ public class runGame {
 				}
 				
 			} else if (state == gameState.GAMESCREEN) {
+				
 				if (showGame) {
 					wScreen.frame.setVisible(false);
 					gameScreen.display(frame, panel);
@@ -69,17 +71,17 @@ public class runGame {
 				
 				gameScreen.runGame();
 				gameScreen.repaint();
-				gameScreen.ballScore();
 				gameScreen.checkGameOver();
 				
 				if (gameScreen.checkSignal()) {
 					state = gameState.FINISHSCREEN;
-					fScreen.display();
 					showFinish = true;
 				}
 				
 			} else if (state == gameState.FINISHSCREEN) {
 				if (showFinish) {
+					fScreen.display(frame, panel);
+					gameScreen.frame.setVisible(false);
 					showFinish = false;
 				}
 				if (fScreen.checkSignal()) {
