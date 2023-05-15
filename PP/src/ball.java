@@ -1,10 +1,13 @@
 import javax.swing.JPanel;
 
 public class ball {
-	int ballx = 380;
+	
+	int[] arraydx = {-3, 3};
+	int[] arraydy = {-2, 2};
+	int ballx = 400;
 	int bally = 375;
-	int balldx = 3;
-	int balldy = 2;
+	int balldx = arraydx[(int) (Math.random() * 2)];
+	int balldy = arraydy[(int) (Math.random() * 2)];
 	boolean ballUp = true;
 	
 	public int[] ballMvt(int playerx, int playery, int compx, int compy) {
@@ -25,12 +28,12 @@ public class ball {
 		}
 
 		//changes direction of the ball when it hits player
-		if ((ballx == (playerx + 15)) && ((bally > playery - 20) && (bally < playery + 100))) {
+		if ((ballx == (playerx + 15)) && ((bally > playery - 25) && (bally < playery + 100))) {
 			balldx = -balldx;
 		}
 		
 		//changes direction of the ball when  it hits computer
-		if ((ballx >= (compx - 45)) && (bally > compy - 20) && (bally < compy + 100)) {
+		if ((ballx >= (compx - 45)) && (bally > compy - 25) && (bally < compy + 100)) {
 			balldx = -balldx;
 		}
 				
