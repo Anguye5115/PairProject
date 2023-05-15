@@ -131,6 +131,7 @@ public class gamePanel2 extends JPanel implements KeyListener {
 	public void keyReleased(KeyEvent e) {	
 	}
 
+	//for testing purposes
 	public static void main(String[] args) {
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -142,7 +143,6 @@ public class gamePanel2 extends JPanel implements KeyListener {
 				TimerTask task = new TimerTask() {
 					public void run() {
 						test.runGame();
-						c.newDest(ball[0], ball[1], b.balldx(), b.balldy());
 						test.repaint();
 //						test.ballScore();
 						try {
