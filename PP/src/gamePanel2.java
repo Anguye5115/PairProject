@@ -30,7 +30,7 @@ public class gamePanel2 extends JPanel implements KeyListener {
 	int balldy = 2;
 	boolean ballUp = true;
 
-	int playerx = 15;
+	int playerx = 14;
 	int playery = 330;
 	int playerdx, playerdy;
 	
