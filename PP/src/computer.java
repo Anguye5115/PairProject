@@ -19,10 +19,12 @@ public class computer {
 //	}
 	
 	public void compTrack(int bally) {
-		compy = bally;
+        compy = bally;
+        if(bally>=610) {
+            compy = 610;
+        }
+    }
 	
-	}
-
 	public int compx(){return compx;}
 	public int compy(){return compy;}
 
