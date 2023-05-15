@@ -23,11 +23,6 @@ public class gamePanel2 extends JPanel implements KeyListener {
 	static int[] ball;
 
 	private boolean signal = false;
-	
-//	int ballx = 375;
-//	int bally = 375;
-//	int balldx = 3;
-//	int balldy = 2;
 
 	int playerx = 14;
 	int playery = 330;
@@ -59,11 +54,6 @@ public class gamePanel2 extends JPanel implements KeyListener {
 		frame.setSize(750, 750);
 		frame.setVisible(true);
 		frame.setLocationRelativeTo(null);
-		
-		//how do you make this show
-		score = new JLabel("Player Score: "+playerScore+"\nComputer Score: "+compScore);
-		score.setLocation(10, 10);
-		panel.add(score);
 	}
 
 	public void runGame() {
@@ -115,13 +105,15 @@ public class gamePanel2 extends JPanel implements KeyListener {
 
 	//moves the player's bar
 	public void keyPressed(KeyEvent e) {
-		if ((e.getKeyCode() == KeyEvent.VK_W) || (e.getKeyCode() == KeyEvent.VK_UP)) {
+		if ((e.getKeyCode() == KeyEvent.VK_W) || 
+				(e.getKeyCode() == KeyEvent.VK_UP)) {
 			if (playery > 10) {
 				playery -= 10;
 			}
 		}
 
-		if ((e.getKeyCode() == KeyEvent.VK_S) || (e.getKeyCode() == KeyEvent.VK_DOWN)) {
+		if ((e.getKeyCode() == KeyEvent.VK_S) || 
+				(e.getKeyCode() == KeyEvent.VK_DOWN)) {
 			if (playery + 100 < 705) {
 				playery += 10;	
 			}

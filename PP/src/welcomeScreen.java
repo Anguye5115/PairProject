@@ -74,7 +74,8 @@ public class welcomeScreen implements ActionListener {
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				JFrame.setDefaultLookAndFeelDecorated(true);
-				welcomeScreen test = new welcomeScreen(new JFrame(), new JPanel());
+				welcomeScreen test = new welcomeScreen
+						(new JFrame(), new JPanel());
 				test.display();
 			}
 		});
