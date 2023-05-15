@@ -70,6 +70,7 @@ public class runGame {
 				gameScreen.runGame();
 				gameScreen.repaint();
 				gameScreen.ballScore();
+				gameScreen.checkGameOver();
 				
 				if (gameScreen.checkSignal()) {
 					state = gameState.FINISHSCREEN;

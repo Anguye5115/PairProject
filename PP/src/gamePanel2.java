@@ -32,7 +32,7 @@ public class gamePanel2 extends JPanel implements KeyListener {
 
 	int playerx = 14;
 	int playery = 330;
-	int playerdx, playerdy;
+	int playerdx;
 	
 	int compx = 710, compy = 330;
 	int compdx; 
@@ -105,6 +105,15 @@ public class gamePanel2 extends JPanel implements KeyListener {
 		}
 	}
 
+	public boolean checkGameOver() {
+		if (ballx < playerx) {
+			gameOver = true;
+			signal = true;
+		}
+		
+		return gameOver;
+	}
+	
 	public boolean checkSignal() {
 		return signal;
 	}
@@ -114,7 +123,6 @@ public class gamePanel2 extends JPanel implements KeyListener {
 	}
 	
 	public void keyTyped(KeyEvent e) {
-
 	}
 
 	//moves the player's bar
@@ -132,10 +140,7 @@ public class gamePanel2 extends JPanel implements KeyListener {
 		}			
 	}
 
-	public void keyReleased(KeyEvent e) {
-		if ((e.getKeyCode() == KeyEvent.VK_W) || (e.getKeyCode() == KeyEvent.VK_UP) || (e.getKeyCode() == KeyEvent.VK_S) || (e.getKeyCode() == KeyEvent.VK_DOWN)) {
-			playerdy = 0;
-		}		
+	public void keyReleased(KeyEvent e) {	
 	}
 
 	public static void main(String[] args) {

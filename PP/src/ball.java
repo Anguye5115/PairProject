@@ -3,7 +3,7 @@ import javax.swing.JPanel;
 public class ball {
 	int ballx = 380;
 	int bally = 375;
-	int balldx = 2;
+	int balldx = 3;
 	int balldy = 2;
 	boolean ballUp = true;
 	
@@ -25,7 +25,9 @@ public class ball {
 		}
 
 		//changes direction of the ball when it hits player
-		if ((ballx == (playerx + 12)) && ((bally > playery - 20) && (bally < playery + 110))) {
+		System.out.println("PLAYER X: " + playerx + " | BALL X: " + ballx);
+		System.out.println("PLAYER Y: " + playery + " | BALL Y: " + bally);
+		if ((ballx == (playerx + 15)) && ((bally > playery - 20) && (bally < playery + 110))) {
 			balldx = -balldx;
 		}
 		
