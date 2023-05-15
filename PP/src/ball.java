@@ -25,7 +25,7 @@ public class ball {
 		}
 
 		//changes direction of the ball when it hits player
-		if ((ballx == (playerx + 15)) && ((bally > playery - 20) && (bally < playery + 110))) {
+		if ((ballx == (playerx + 15)) && ((bally > playery - 20) && (bally < playery + 100))) {
 			balldx = -balldx;
 		}
 		

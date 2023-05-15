@@ -32,7 +32,6 @@ public class finishScreen implements ActionListener {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
 		
-		panel = new JPanel();
 		panel.setPreferredSize(new Dimension(750, 750));
 		panel.setLayout(null);
 		panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));

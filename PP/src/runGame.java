@@ -32,6 +32,7 @@ public class runGame {
 	private finishScreen fScreen;
 	private gamePanel2 gameScreen;
 	
+	private boolean showWelcome = true;
 	private boolean showGame = false;
 	private boolean showFinish = false;
 	
@@ -54,7 +55,11 @@ public class runGame {
 			
 			if (state == gameState.WELCOMESCREEN) {
 				
-				wScreen.display();
+				if (showWelcome) {
+					wScreen.display();
+					showWelcome = false;
+				}
+				
 				if (wScreen.checkSignal()) {
 					state = gameState.GAMESCREEN;
 					wScreen.resetSignal();
@@ -79,14 +84,19 @@ public class runGame {
 				}
 				
 			} else if (state == gameState.FINISHSCREEN) {
+				
 				if (showFinish) {
-					fScreen.display(frame, panel);
 					gameScreen.frame.setVisible(false);
+					fScreen.display(frame, panel);
 					showFinish = false;
 				}
+				
 				if (fScreen.checkSignal()) {
-					
+					state = gameState.WELCOMESCREEN;
+					showWelcome = true;
+					gameScreen.reset();
 				}
+				
 			}
 			panel.repaint();
 		}

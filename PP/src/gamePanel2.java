@@ -28,19 +28,27 @@ public class gamePanel2 extends JPanel implements KeyListener {
 //	int bally = 375;
 //	int balldx = 3;
 //	int balldy = 2;
-	boolean ballUp = true;
 
 	int playerx = 14;
 	int playery = 330;
-	int playerdx;
 	
 	int compx = 710, compy = 330;
-	int compdx; 
-	int compdy = -5;
+
 	
 	static int playerScore = 0;
 	static int compScore = 0;
 
+	public void reset() {
+		c = new computer();
+		b = new ball();
+		ball = null;
+		signal = false;
+		playerx = 14;
+		playery = 330;
+		compx = 710;
+		compy = 330;
+	}
+	
 	public void display(JFrame frame, JPanel panel) {
 		this.frame = frame;
 		this.panel = panel;	
@@ -89,18 +97,6 @@ public class gamePanel2 extends JPanel implements KeyListener {
 		//code for bot
 		g.fillRect(c.compx(), c.compy(), 15, 100);
 	}
-	
-//	public void ballScore() {
-//		if(ballx<=10 && bally>playery && bally<playery+100) {
-//			playerScore++;
-//			System.out.println("Player point: "+playerScore);
-//		}
-//		
-//		if(ballx>=689 && bally>compy && bally<compy+100) {
-//			compScore++;
-//			System.out.println("Comp point: "+compScore);
-//		}
-//	}
 
 	public void checkGameOver() {
 		if (b.ballx() < playerx) {
