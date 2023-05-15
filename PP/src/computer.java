@@ -19,15 +19,7 @@ public class computer {
 //	}
 	
 	public void compTrack(int bally) {
-//		compy = bally;
-		
-		for (int i = 0; i < rand.nextInt(4); i++) {
-			compy += compdy;
-		}
-		
-		if ((compy + 100 >= 706) || (compy <= 14)) {
-			compdy = -compdy;
-		}
+		compy = bally;
 	
 	}
 
