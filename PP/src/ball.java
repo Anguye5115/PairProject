@@ -3,7 +3,7 @@ import javax.swing.JPanel;
 public class ball {
 	int ballx = 380;
 	int bally = 375;
-	int balldx = 2;
+	int balldx = 3;
 	int balldy = 2;
 	boolean ballUp = true;
 	
@@ -37,6 +37,7 @@ public class ball {
 //		}
 		//---------------------------------------------------------
 		
+		//ball bounces off the top and bottom walls
 		if (bally < 10) {
 			balldy = -balldy;
 			bally = 10;
@@ -44,7 +45,6 @@ public class ball {
 			balldy = -balldy;
 			bally = height - 60;
 		}
-
 		
 //		//testing but spawns in and out 
 //		if (ballx < 10 && bally>=playery && bally<(playery+100)) {
@@ -57,7 +57,8 @@ public class ball {
 //		
 		
 		//changes direction of the ball when it hits player
-		if ((ballx == (playerx + 45)) && ((bally > playery) && (bally < playery + 100))) {
+		System.out.println(ballx);
+		if ((ballx == 14) && ((bally > playery) && (bally < playery + 100))) {
 			balldx = -balldx;
 		}
 		

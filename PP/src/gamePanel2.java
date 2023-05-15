@@ -17,7 +17,9 @@ public class gamePanel2 extends JPanel implements KeyListener {
 	
 	static player p = new player();
 	static computer c = new computer();
-	static ball2 b = new ball2();
+	
+	//testing ball
+	static ball b = new ball();
 	
 	static int[] ball;
 
