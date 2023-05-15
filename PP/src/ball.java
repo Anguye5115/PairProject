@@ -25,8 +25,6 @@ public class ball {
 		}
 
 		//changes direction of the ball when it hits player
-		System.out.println("PLAYER X: " + playerx + " | BALL X: " + ballx);
-		System.out.println("PLAYER Y: " + playery + " | BALL Y: " + bally);
 		if ((ballx == (playerx + 15)) && ((bally > playery - 20) && (bally < playery + 110))) {
 			balldx = -balldx;
 		}
