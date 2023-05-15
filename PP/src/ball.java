@@ -4,7 +4,7 @@ public class ball {
 	
 	int[] arraydx = {-3, 3};
 	int[] arraydy = {-2, 2};
-	int ballx = 400;
+	int ballx = 380;
 	int bally = 375;
 	int balldx = arraydx[(int) (Math.random() * 2)];
 	int balldy = arraydy[(int) (Math.random() * 2)];
@@ -28,8 +28,7 @@ public class ball {
 		}
 
 		//changes direction of the ball when it hits player
-		if ((ballx == (playerx + 15)) && ((bally > playery - 25) && 
-				(bally < playery + 100))) {
+		if ((ballx == (playerx + 15)) && ((bally > playery - 25) && (bally < playery + 100))) {
 			balldx = -balldx;
 		}
 		
